@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://batd5h0bhvgmd"]
+[gd_scene load_steps=10 format=3 uid="uid://batd5h0bhvgmd"]
 
 [ext_resource type="PackedScene" uid="uid://d0hs8j8ts2ele" path="res://scenes/player.tscn" id="1_014kd"]
 [ext_resource type="Texture2D" uid="uid://bey0dpxgbmyy7" path="res://assets/sprites/world_tileset-export.png" id="1_bswci"]
 [ext_resource type="PackedScene" uid="uid://cthu6fwrqcs21" path="res://scenes/damage_zone.tscn" id="3_rus8k"]
+[ext_resource type="PackedScene" uid="uid://dbnj1j6ygn6wu" path="res://scenes/teleporter.tscn" id="4_5xbjy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("1_bswci")
@@ -170,7 +171,13 @@ physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_rus8k")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xbjy"]
-size = Vector2(80, 97)
+size = Vector2(80, 11.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rus8k"]
+size = Vector2(80, 51)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4nkto"]
+radius = 11.0454
 
 [node name="Level_1" type="Node2D"]
 
@@ -179,18 +186,36 @@ tile_set = SubResource("TileSet_5xbjy")
 format = 2
 layer_0/tile_data = PackedInt32Array(196592, 0, 0, 196593, 0, 0, 196594, 0, 0, 196595, 0, 0, 196596, 0, 0, 196597, 0, 0, 196598, 0, 0, 196599, 0, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 65564, 0, 0, 65565, 0, 0, 65566, 0, 0, 65567, 0, 0, 65568, 0, 0, 65569, 0, 0, 65570, 0, 0, 65571, 0, 0, 65572, 0, 0, 65573, 0, 0, 65574, 0, 0, 65575, 0, 0, 65576, 0, 0, 65577, 0, 0, 65578, 0, 0, 65579, 0, 0, 65580, 0, 0, 65581, 0, 0, 65582, 0, 0, 65583, 0, 0, 48, 0, 0, 49, 0, 0, 50, 0, 0, 51, 0, 0, 52, 0, 0, 53, 0, 0, 54, 0, 0, 55, 0, 0, 56, 0, 0, 57, 0, 0, 58, 0, 0, 59, 0, 0, 60, 0, 0, 61, 0, 0, 62, 0, 0, 63, 0, 0, 64, 0, 0, 65, 0, 0, 66, 0, 0, 67, 0, 0, 68, 0, 0, 69, 0, 0, 70, 0, 0, 196591, 0, 0, 196590, 0, 0, 131054, 0, 0, 131053, 0, 0, 131052, 0, 0, 131051, 0, 0, 131050, 0, 0, 131049, 0, 0, 131048, 0, 0, 65511, 0, 0, -25, 0, 0, -65561, 0, 0, -65562, 0, 0, -65563, 0, 0, -65564, 0, 0, -65565, 0, 0, -65566, 0, 0, -65567, 0, 0, -65568, 0, 0, -65569, 0, 0, -65570, 0, 0, -65571, 0, 0, -65572, 0, 0, -65573, 0, 0, -65574, 0, 0, -65575, 0, 0, -131111, 0, 0, -131112, 0, 0, -196648, 0, 0, -196649, 0, 0, -196650, 0, 0, -196651, 0, 0, -196652, 0, 0, -196653, 0, 0, 196613, 0, 0, 262149, 0, 0, 327685, 0, 0, 393221, 0, 0, 458757, 0, 0, 524293, 0, 0, 589829, 0, 0, 655365, 0, 0, 720901, 0, 0, 786437, 0, 0, 851973, 0, 0, 917509, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 917515, 0, 0, 851979, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 655375, 0, 0, 655376, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 458773, 0, 0, 458774, 0, 0, 393238, 0, 0, 393239, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 262169, 0, 0, 262170, 0, 0, 196634, 0, 0, 196635, 0, 0, 131100, 0, 0, 131101, 0, 0, 524294, 65536, 5, 524295, 65536, 5, 524296, 65536, 5, 524297, 65536, 5, 524298, 65536, 5)
 
-[node name="player" parent="." instance=ExtResource("1_014kd")]
-position = Vector2(0, 31)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(168, 118)
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-
 [node name="damage_zone" parent="." instance=ExtResource("3_rus8k")]
-position = Vector2(138, 212)
+position = Vector2(133, 159)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
-position = Vector2(-1, -19.5)
+position = Vector2(2, -8.75)
 shape = SubResource("RectangleShape2D_5xbjy")
+
+[node name="player" parent="." instance=ExtResource("1_014kd")]
+position = Vector2(0, 32)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-3, -10)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(133, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, -10.5)
+shape = SubResource("RectangleShape2D_rus8k")
+
+[node name="teleporter" parent="." instance=ExtResource("4_5xbjy")]
+position = Vector2(-229, 8)
+teleport_destination = NodePath("../Marker2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter"]
+position = Vector2(4, 4)
+shape = SubResource("CircleShape2D_4nkto")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(483, -3)

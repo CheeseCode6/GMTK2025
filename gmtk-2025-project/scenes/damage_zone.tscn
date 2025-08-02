@@ -7,7 +7,7 @@
 script = ExtResource("1_ppofr")
 
 [node name="death_wait" type="Timer" parent="."]
-wait_time = 1.05
+wait_time = 1.2
 one_shot = true
 
 [node name="death_sound" type="AudioStreamPlayer2D" parent="."]

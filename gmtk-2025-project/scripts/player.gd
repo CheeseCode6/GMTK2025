@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 const SPEED = 200
 const JUMP_VELOCITY = -300
-const jumping_gravity = 1800
+const jumping_gravity = 1200
 const falling_gravity = 2200
 const accelaration = 80
 const def_decel = 80
@@ -57,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	was_on_floor = is_on_floor()
 	
 func jump()->void:
+	animation.play("idle")
 	velocity.y = JUMP_VELOCITY
 	buffered = false
 

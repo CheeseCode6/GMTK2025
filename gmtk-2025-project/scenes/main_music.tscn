@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fnj6ouh3qb4c"]
+
+[ext_resource type="AudioStream" uid="uid://cxp8msb5whub0" path="res://assets/Music/video_20250731_194310_edit.mp3" id="1_k6dxv"]
+
+[node name="main_music" type="AudioStreamPlayer"]
+stream = ExtResource("1_k6dxv")
+volume_db = -10.147
+autoplay = true
