@@ -1,13 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cthu6fwrqcs21"]
+[gd_scene load_steps=3 format=3 uid="uid://cthu6fwrqcs21"]
 
 [ext_resource type="Script" uid="uid://bj1t03itndiw4" path="res://scripts/damage_zone.gd" id="1_ppofr"]
+[ext_resource type="AudioStream" uid="uid://dmt2j22x34qn6" path="res://assets/sound_effects/death_slime.mp3" id="2_0k1nd"]
 
 [node name="damage_zone" type="Area2D"]
 script = ExtResource("1_ppofr")
 
 [node name="death_wait" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 1.05
 one_shot = true
+
+[node name="death_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0k1nd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="death_wait" to="." method="_on_death_wait_timeout"]

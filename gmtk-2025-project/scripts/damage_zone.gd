@@ -1,17 +1,19 @@
 #damagezone.gd
 extends Area2D
 @onready var death_wait: Timer = $death_wait
-var plyr:Node2D
+@onready var death_sound: AudioStreamPlayer2D = $death_sound
 
+var plyr:Node2D
 func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		plyr = body
+		plyr.velocity = Vector2.ZERO
+		plyr.dead = true
 		die()
-		
+
 func die()->void:
-	plyr.dead = true
-	plyr.velocity.y = 0
-	plyr.velocity.x = 0
+	plyr.animation.play("death")
+	death_sound.play()
 	Engine.time_scale = 0.5
 	death_wait.start()
 

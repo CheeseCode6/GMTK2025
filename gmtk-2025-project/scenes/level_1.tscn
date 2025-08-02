@@ -170,7 +170,7 @@ physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_rus8k")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xbjy"]
-size = Vector2(80, 107)
+size = Vector2(80, 97)
 
 [node name="Level_1" type="Node2D"]
 
@@ -184,6 +184,7 @@ position = Vector2(0, 31)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(168, 118)
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="damage_zone" parent="." instance=ExtResource("3_rus8k")]
@@ -191,5 +192,5 @@ position = Vector2(138, 212)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
-position = Vector2(-1, -24.5)
+position = Vector2(-1, -19.5)
 shape = SubResource("RectangleShape2D_5xbjy")
