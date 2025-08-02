@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://batd5h0bhvgmd"]
+[gd_scene load_steps=7 format=3 uid="uid://batd5h0bhvgmd"]
 
 [ext_resource type="PackedScene" uid="uid://d0hs8j8ts2ele" path="res://scenes/player.tscn" id="1_014kd"]
 [ext_resource type="Texture2D" uid="uid://bey0dpxgbmyy7" path="res://assets/sprites/world_tileset-export.png" id="1_bswci"]
+[ext_resource type="PackedScene" uid="uid://cthu6fwrqcs21" path="res://scenes/damage_zone.tscn" id="3_rus8k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("1_bswci")
@@ -168,6 +169,9 @@ physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_rus8k")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xbjy"]
+size = Vector2(91, 39)
+
 [node name="Level_1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -181,3 +185,11 @@ position = Vector2(0, 31)
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="damage_zone" parent="." instance=ExtResource("3_rus8k")]
+position = Vector2(138, 212)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
+position = Vector2(4.5, 9.5)
+shape = SubResource("RectangleShape2D_5xbjy")

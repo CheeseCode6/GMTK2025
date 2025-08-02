@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bonmjx52r88ct"]
+
+[ext_resource type="Texture2D" uid="uid://b36jfpvx5ntur" path="res://assets/sprites/dirt_block.png" id="1_s8tg3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c12hc"]
+size = Vector2(32, 32)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2(1, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s8tg3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c12hc")
