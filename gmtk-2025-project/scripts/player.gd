@@ -73,14 +73,14 @@ func _on_coyote_time_timeout() -> void:
 	coyoted = false
 	
 func place_block()->void:
-	if last_block:
-		last_block.queue_free()
-		last_block.visible = false
+	#if last_block:
+		#last_block.queue_free()
+		#last_block.visible = false
 	var block = preload("res://scenes/dead_blok.tscn").instantiate()
 	var offset := Vector2(1, -16)
 	block.global_position = global_position + offset
 	get_parent().call_deferred("add_child", block)
-	last_block = block
+	#last_block = block
 	
 func respawn():
 	dead = false

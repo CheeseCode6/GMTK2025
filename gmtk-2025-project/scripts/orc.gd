@@ -11,8 +11,8 @@ var speed = 50
 
 func _process(delta: float) -> void:
 	if ray_cast_right.is_colliding() or not ray_castbright.is_colliding():
-		direction = -1
-		animated_sprite.flip_h = true
+			direction = -1
+			animated_sprite.flip_h = true
 		
 	if ray_cast_left.is_colliding() or not ray_castbleft.is_colliding():
 		direction = 1

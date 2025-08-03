@@ -55,7 +55,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dg8k4"]
-radius = 5.0
+radius = 9.0
 
 [node name="orc" type="Node2D"]
 script = ExtResource("1_hu8b3")
@@ -76,11 +76,11 @@ shape = SubResource("CapsuleShape2D_dg8k4")
 
 [node name="raycast_right" type="RayCast2D" parent="."]
 position = Vector2(-1, -15)
-target_position = Vector2(14, 0)
+target_position = Vector2(9, 0)
 
 [node name="raycast_left" type="RayCast2D" parent="."]
 position = Vector2(-1, -15)
-target_position = Vector2(-13, 0)
+target_position = Vector2(-8, 0)
 
 [node name="raycast_bleft" type="RayCast2D" parent="."]
 position = Vector2(0, -9)
