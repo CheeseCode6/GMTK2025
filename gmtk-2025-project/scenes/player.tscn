@@ -1,10 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://d0hs8j8ts2ele"]
+[gd_scene load_steps=27 format=3 uid="uid://d0hs8j8ts2ele"]
 
 [ext_resource type="Script" uid="uid://c2qogf4xg27g6" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://w5vb2lcqrqyg" path="res://assets/sprites/FreeSlime/slime_die-new.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://0wrr2u3cd6e7" path="res://assets/sprites/FreeSlime/slime_idle.png" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://ctvlf44bkgkw" path="res://assets/sprites/FreeSlime/slime_die_final.png" id="3_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://c3wytroc8xwpk" path="res://assets/sprites/FreeSlime/slime_die_final2.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://cbdxsdg7gfcfc" path="res://assets/sprites/FreeSlime/slime_run.png" id="4_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://dmt2j22x34qn6" path="res://assets/sound_effects/death_slime.mp3" id="7_fjrip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
 atlas = ExtResource("2_dqkch")
@@ -13,18 +15,6 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("2_dqkch")
 region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
-atlas = ExtResource("2_dqkch")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
-atlas = ExtResource("2_dqkch")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
-atlas = ExtResource("2_dqkch")
-region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
 atlas = ExtResource("2_dqkch")
@@ -38,12 +28,12 @@ region = Rect2(256, 0, 32, 32)
 atlas = ExtResource("3_tuyoq")
 region = Rect2(288, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
-atlas = ExtResource("3_tuyoq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("4_fjrip")
 region = Rect2(320, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
-atlas = ExtResource("3_tuyoq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("4_fjrip")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
@@ -96,15 +86,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_smehm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ur7pv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y4r1p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jej6c")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_f1ej7")
 }, {
 "duration": 1.0,
@@ -114,14 +95,14 @@ animations = [{
 "texture": SubResource("AtlasTexture_ujl30")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_31cv2")
+"texture": SubResource("AtlasTexture_ur7pv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pf23h")
+"texture": SubResource("AtlasTexture_y4r1p")
 }],
 "loop": false,
 "name": &"death",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -174,8 +155,9 @@ script = ExtResource("1_g2els")
 position = Vector2(1, -14)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_g2els")
-animation = &"running"
-frame_progress = 0.63231
+animation = &"death"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -12)
@@ -187,5 +169,13 @@ wait_time = 0.05
 [node name="coyote_time" type="Timer" parent="."]
 wait_time = 0.069
 
+[node name="death_wait" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="death_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_fjrip")
+
 [connection signal="timeout" from="jump_buffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="coyote_time" to="." method="_on_coyote_time_timeout"]
+[connection signal="timeout" from="death_wait" to="." method="_on_death_wait_timeout"]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://batd5h0bhvgmd"]
+[gd_scene load_steps=9 format=3 uid="uid://batd5h0bhvgmd"]
 
 [ext_resource type="PackedScene" uid="uid://d0hs8j8ts2ele" path="res://scenes/player.tscn" id="1_014kd"]
 [ext_resource type="Texture2D" uid="uid://bey0dpxgbmyy7" path="res://assets/sprites/world_tileset-export.png" id="1_bswci"]
 [ext_resource type="PackedScene" uid="uid://cthu6fwrqcs21" path="res://scenes/damage_zone.tscn" id="3_rus8k"]
-[ext_resource type="PackedScene" uid="uid://dbnj1j6ygn6wu" path="res://scenes/teleporter.tscn" id="4_5xbjy"]
+[ext_resource type="PackedScene" uid="uid://d1iy5tbl1mbry" path="res://scenes/orc.tscn" id="4_5xbjy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("1_bswci")
@@ -176,9 +176,6 @@ size = Vector2(80, 11.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rus8k"]
 size = Vector2(80, 51)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4nkto"]
-radius = 11.0454
-
 [node name="Level_1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -209,13 +206,5 @@ position = Vector2(133, 192)
 position = Vector2(3, -10.5)
 shape = SubResource("RectangleShape2D_rus8k")
 
-[node name="teleporter" parent="." instance=ExtResource("4_5xbjy")]
-position = Vector2(-229, 8)
-teleport_destination = NodePath("../Marker2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporter"]
-position = Vector2(4, 4)
-shape = SubResource("CircleShape2D_4nkto")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(483, -3)
+[node name="orc" parent="." instance=ExtResource("4_5xbjy")]
+position = Vector2(-253, 31)

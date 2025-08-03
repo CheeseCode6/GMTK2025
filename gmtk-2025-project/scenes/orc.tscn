@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1iy5tbl1mbry"]
+
+[ext_resource type="Texture2D" uid="uid://5315dlcjoiyc" path="res://assets/sprites/orc-enemy.png" id="1_bfp0d"]
+[ext_resource type="Script" uid="uid://b7bn4e5414rts" path="res://scripts/orc.gd" id="1_hu8b3"]
+[ext_resource type="PackedScene" uid="uid://cthu6fwrqcs21" path="res://scenes/damage_zone.tscn" id="2_hu8b3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5mlm"]
+atlas = ExtResource("1_bfp0d")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvs4g"]
+atlas = ExtResource("1_bfp0d")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xme4o"]
+atlas = ExtResource("1_bfp0d")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duj3f"]
+atlas = ExtResource("1_bfp0d")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48uv6"]
+atlas = ExtResource("1_bfp0d")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33ppp"]
+atlas = ExtResource("1_bfp0d")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sab3t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5mlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvs4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xme4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duj3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48uv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33ppp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dg8k4"]
+radius = 5.0
+
+[node name="orc" type="Node2D"]
+script = ExtResource("1_hu8b3")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -32)
+sprite_frames = SubResource("SpriteFrames_sab3t")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
+
+[node name="damage_zone" parent="." instance=ExtResource("2_hu8b3")]
+position = Vector2(-2, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
+position = Vector2(2, -10)
+shape = SubResource("CapsuleShape2D_dg8k4")
+
+[node name="raycast_right" type="RayCast2D" parent="."]
+position = Vector2(-1, -15)
+target_position = Vector2(14, 0)
+
+[node name="raycast_left" type="RayCast2D" parent="."]
+position = Vector2(-1, -15)
+target_position = Vector2(-13, 0)
+
+[node name="raycast_bleft" type="RayCast2D" parent="."]
+position = Vector2(0, -9)
+target_position = Vector2(-20, 11)
+
+[node name="raycast_bright" type="RayCast2D" parent="."]
+position = Vector2(0, -9)
+target_position = Vector2(19, 12)

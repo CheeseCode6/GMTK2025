@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var jump_buffer: Timer = $jump_buffer
 @onready var coyote_time: Timer = $coyote_time
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var death_wait: Timer = $death_wait
+@onready var death_sound: AudioStreamPlayer2D = $death_sound
 
 const SPEED = 200
 const JUMP_VELOCITY = -300
@@ -24,6 +26,9 @@ func _ready() -> void:
 	spawn_pos = position
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("die"):
+		dead = true
+		die()
 	if not is_on_floor():
 		if was_on_floor:
 			coyoted = true
@@ -81,3 +86,14 @@ func respawn():
 	dead = false
 	position = spawn_pos
 	velocity = Vector2.ZERO
+
+func die()->void:
+	animation.play("death")
+	death_sound.play()
+	Engine.time_scale = 0.5
+	death_wait.start()
+
+func _on_death_wait_timeout() -> void:
+	Engine.time_scale = 1
+	place_block()
+	respawn()
