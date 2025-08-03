@@ -11,7 +11,11 @@ config_version=5
 [application]
 
 config/name="GMTK 2025 project"
+<<<<<<< HEAD
 run/main_scene="uid://rnb423ye00f2"
+=======
+run/main_scene="uid://batd5h0bhvgmd"
+>>>>>>> 86424d9109bf7d8397001d167c479a4086d61384
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

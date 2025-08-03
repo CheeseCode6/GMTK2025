@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://b2auqlguet3py" path="res://assets/sprites/Final/Background_0.png" id="3_fcfvj"]
 [ext_resource type="PackedScene" uid="uid://cthu6fwrqcs21" path="res://scenes/damage_zone.tscn" id="3_rus8k"]
 [ext_resource type="Texture2D" uid="uid://b0ryvd63057o4" path="res://assets/sprites/Final/Background_1.png" id="4_4nkto"]
-[ext_resource type="PackedScene" uid="uid://oce6bfej1que" path="res://scenes/tile_map_2.tscn" id="4_fcfvj"]
+[ext_resource type="PackedScene" path="res://scenes/tile_map_2.tscn" id="4_fcfvj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nkto"]
-size = Vector2(59.5, 18.5)
+size = Vector2(50, 18.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcfvj"]
-size = Vector2(24.5, 16)
+size = Vector2(17, 14)
 
 [node name="Level_1" type="Node2D"]
 position = Vector2(3, 0)
@@ -48,7 +48,7 @@ position_smoothing_enabled = true
 position = Vector2(-83, 118)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
-position = Vector2(1.5, -11.25)
+position = Vector2(2, -11.25)
 shape = SubResource("RectangleShape2D_4nkto")
 
 [node name="damage_zone2" parent="." instance=ExtResource("3_rus8k")]
@@ -62,5 +62,5 @@ shape = SubResource("RectangleShape2D_4nkto")
 position = Vector2(29, 119)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone3"]
-position = Vector2(1.25, -12)
+position = Vector2(1.5, -11)
 shape = SubResource("RectangleShape2D_fcfvj")
