@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var death_sound: AudioStreamPlayer2D = $death_sound
 
 const SPEED = 200
-const JUMP_VELOCITY = -300
+const JUMP_VELOCITY = -400
 const jumping_gravity = 1200
 const falling_gravity = 2200
 const accelaration = 80
